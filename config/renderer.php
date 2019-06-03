@@ -4,7 +4,7 @@ return [
 
     'routes' => [
         'base' => '/images',
-        'middleware' => []
+        'middleware' => [],
     ],
 
     'storage' => [

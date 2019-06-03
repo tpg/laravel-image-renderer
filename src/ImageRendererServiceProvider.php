@@ -12,18 +12,14 @@ class ImageRendererServiceProvider extends ServiceProvider
     {
         Route::group([
             'prefix' => config('renderer.routes.base'),
-            'middleware' => config('renderer.middleware')
+            'middleware' => config('renderer.middleware'),
         ], function () {
-
             Route::get('{key}', ImageController::class);
-
         });
 
         $this->publishes([
-            __DIR__.'/../config/renderer.php' => config_path('renderer.php')
+            __DIR__.'/../config/renderer.php' => config_path('renderer.php'),
         ], 'config');
-
-
     }
 
     public function register()

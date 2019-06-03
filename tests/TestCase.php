@@ -11,7 +11,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
 
-        if (!$this->storageDisk()->exists('images')) {
+        if (! $this->storageDisk()->exists('images')) {
             $this->storageDisk()->makeDirectory('images');
         }
         copy(__DIR__.'/media/test_image_640_480.jpg', storage_path('app/images/test_image.jpg'));
