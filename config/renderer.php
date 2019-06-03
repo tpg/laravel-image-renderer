@@ -13,7 +13,7 @@ return [
     ],
 
     'intervention' => [
-        'driver' => 'gd'    // imagick
+        'driver' => 'gd',    // imagick
     ],
 
 ];
