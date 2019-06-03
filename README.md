@@ -1,5 +1,7 @@
 # Laravel Image Actions
 
+[![Build Status](https://travis-ci.org/tpg/laravel-image-renderer.svg?branch=master)](https://travis-ci.org/tpg/laravel-image-renderer)
+
  A really simple solution to working with images in Laravel. Especially when using the Artisan `storage:link` command is not an option. 
 
 ## Installation
