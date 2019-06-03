@@ -13,7 +13,7 @@ class ImageTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $imagePath = config('renderer.routes.base') . '/test_image.jpg';
+        $imagePath = config('renderer.routes.base').'/test_image.jpg';
 
         $this->get($imagePath)
             ->assertStatus(200)
@@ -25,7 +25,7 @@ class ImageTest extends TestCase
      */
     public function it_will_return_a_404_for_missing_images()
     {
-        $imagePath = config('renderer.routes.base') . '/missing-image.jpg';
+        $imagePath = config('renderer.routes.base').'/missing-image.jpg';
 
         $this->get($imagePath)->assertStatus(404);
     }
@@ -35,13 +35,13 @@ class ImageTest extends TestCase
      */
     public function it_can_transform_an_image()
     {
-        $imagePath = config('renderer.routes.base') . '/test_image.jpg';
+        $imagePath = config('renderer.routes.base').'/test_image.jpg';
 
         $query = http_build_query([
-            'width' => 300
+            'width' => 300,
         ]);
 
-        $response = $this->get($imagePath . '?' . $query);
+        $response = $this->get($imagePath.'?'.$query);
 
         $image = (new ImageManager())->make($response->getContent());
 

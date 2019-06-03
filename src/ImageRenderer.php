@@ -2,11 +2,10 @@
 
 namespace TPG\ImageActions;
 
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Storage;
 use TPG\ImageActions\Traits\TransformsImages;
 
 class ImageRenderer
@@ -24,7 +23,7 @@ class ImageRenderer
     public function __construct()
     {
         $this->imageManager = new ImageManager([
-            'driver' => config('renderer.intervention.driver')
+            'driver' => config('renderer.intervention.driver'),
         ]);
     }
 
@@ -42,7 +41,7 @@ class ImageRenderer
     protected function transform(Image $image, array $options)
     {
         foreach ($options as $key => $option) {
-            $image = $this->{'transform' . Str::ucfirst($key)}($image, $option);
+            $image = $this->{'transform'.Str::ucfirst($key)}($image, $option);
         }
 
         return $image;

@@ -4,7 +4,7 @@ return [
 
     'routes' => [
         'base' => '/images',
-        'middleware' => []
+        'middleware' => [],
     ],
 
     'storage' => [
@@ -13,7 +13,7 @@ return [
     ],
 
     'intervention' => [
-        'driver' => 'imagick'
+        'driver' => 'imagick',
     ],
 
 ];
