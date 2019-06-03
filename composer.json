@@ -1,0 +1,31 @@
+{
+    "name": "tpg/laravel-image-renderer",
+    "description": "A simple solution for dealing with images in laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Warrick Bayman",
+            "email": "me@warrickbayman.co.za"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.4",
+        "intervention/imagecache": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "TPG\\ImageActions\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TPG\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "orchestra/testbench": "^3.8",
+        "phpunit/phpunit": "^8.1"
+    }
+}
