@@ -2,11 +2,11 @@
 
 namespace TPG\ImageActions\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Http\Request;
 use TPG\ImageActions\ImageRenderer;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ImageController
 {
@@ -14,7 +14,7 @@ class ImageController
     {
         $path = $this->getFilePath($filename);
 
-        if (!$this->fileExists($path)) {
+        if (! $this->fileExists($path)) {
             $this->sendMissingFileResponse($request, $filename);
         }
 
@@ -24,11 +24,11 @@ class ImageController
     protected function getFilePath(string $filename): string
     {
         $path = config('renderer.storage.path');
-        if (!Str::endsWith($path, '/')) {
+        if (! Str::endsWith($path, '/')) {
             $path .= '/';
         }
 
-        return $path . $filename;
+        return $path.$filename;
     }
 
     protected function fileExists(string $path)
@@ -39,7 +39,7 @@ class ImageController
 
     protected function sendMissingFileResponse(Request $request, string $filename)
     {
-        $message = 'File ' . $filename . ' was not found.';
+        $message = 'File '.$filename.' was not found.';
 
         throw new NotFoundHttpException($message);
     }
