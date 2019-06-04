@@ -1,10 +1,10 @@
 <?php
 
-namespace TPG\ImageActions;
+namespace TPG\ImageRenderer;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use TPG\ImageActions\Http\Controllers\ImageController;
+use TPG\ImageRenderer\Http\Controllers\ImageController;
 
 class ImageRendererServiceProvider extends ServiceProvider
 {

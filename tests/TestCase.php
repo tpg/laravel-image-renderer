@@ -3,7 +3,7 @@
 namespace TPG\Tests;
 
 use Illuminate\Support\Facades\Storage;
-use TPG\ImageActions\ImageRendererServiceProvider;
+use TPG\ImageRenderer\ImageRendererServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
