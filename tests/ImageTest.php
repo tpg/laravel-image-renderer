@@ -3,8 +3,8 @@
 namespace TPG\Tests;
 
 use Faker\Provider\Image;
-use Illuminate\Support\Facades\Config;
 use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Config;
 use TPG\Tests\Transformers\CustomTransformer;
 
 class ImageTest extends TestCase
@@ -82,7 +82,7 @@ class ImageTest extends TestCase
         $imagePath = config('renderer.routes.base').'/test_image.jpg';
 
         $query = http_build_query([
-            'invalid' => 500
+            'invalid' => 500,
         ]);
 
         $this->expectException(\InvalidArgumentException::class);

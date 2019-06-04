@@ -3,12 +3,12 @@
 namespace TPG\ImageRenderer\Transformers;
 
 /**
- * Class Transformer
+ * Class Transformer.
  */
 abstract class Transformer
 {
     /**
-     * The transformer
+     * The transformer.
      *
      * @param $image
      * @param mixed ...$values

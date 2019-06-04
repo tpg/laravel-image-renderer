@@ -5,7 +5,7 @@ namespace TPG\ImageRenderer\Transformers;
 class SquareTransformer extends Transformer
 {
     /**
-     * The transformer
+     * The transformer.
      *
      * @param $image
      * @param mixed ...$values
