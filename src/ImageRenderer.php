@@ -2,15 +2,13 @@
 
 namespace TPG\ImageRenderer;
 
-use Illuminate\Support\Str;
 use Intervention\Image\Image;
 use Intervention\Image\ImageCache;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
-use TPG\ImageRenderer\Traits\TransformsImages;
 
 /**
- * Class ImageRenderer
+ * Class ImageRenderer.
  */
 class ImageRenderer
 {
@@ -30,7 +28,7 @@ class ImageRenderer
     }
 
     /**
-     * Render the image
+     * Render the image.
      *
      * @param string $path
      * @param array $options
@@ -38,7 +36,7 @@ class ImageRenderer
      */
     public function render(string $path, array $options = [])
     {
-        if (!$options || count($options) === 0) {
+        if (! $options || count($options) === 0) {
             return $this->imageData($path);
         }
 
@@ -56,7 +54,7 @@ class ImageRenderer
     }
 
     /**
-     * Transform an image
+     * Transform an image.
      *
      * @param ImageCache $image
      * @param array $options
@@ -65,9 +63,9 @@ class ImageRenderer
     protected function transform(ImageCache $image, array $options)
     {
         foreach ($options as $key => $value) {
-            $class = config('renderer.transformers.' . $key);
-            if (!$class) {
-                throw new \InvalidArgumentException('No transformer with key ' . $key);
+            $class = config('renderer.transformers.'.$key);
+            if (! $class) {
+                throw new \InvalidArgumentException('No transformer with key '.$key);
             }
 
             (new $class)->handle($image, ...explode(',', $value));
@@ -77,7 +75,7 @@ class ImageRenderer
     }
 
     /**
-     * Get image data
+     * Get image data.
      *
      * @param string $path
      * @return string

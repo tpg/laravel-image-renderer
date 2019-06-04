@@ -7,7 +7,7 @@ use TPG\ImageRenderer\Transformers\Transformer;
 class CustomTransformer extends Transformer
 {
     /**
-     * The transformer
+     * The transformer.
      *
      * @param $image
      * @param mixed ...$values
