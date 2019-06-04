@@ -3,12 +3,12 @@
 namespace TPG\ImageRenderer\Transformers;
 
 /**
- * Class WidthTransformer
+ * Class WidthTransformer.
  */
 class WidthTransformer extends Transformer
 {
     /**
-     * The transformer
+     * The transformer.
      *
      * @param $image
      * @param mixed ...$values

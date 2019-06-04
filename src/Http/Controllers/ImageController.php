@@ -2,21 +2,20 @@
 
 namespace TPG\ImageRenderer\Http\Controllers;
 
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use TPG\ImageRenderer\ImageRenderer;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Class ImageController
- * @package TPG\ImageRenderer\Http\Controllers
+ * Class ImageController.
  */
 class ImageController
 {
     /**
-     * Image response
+     * Image response.
      *
      * @param Request $request
      * @param string $filename
@@ -39,7 +38,7 @@ class ImageController
     }
 
     /**
-     * Get the headers to attach to the response
+     * Get the headers to attach to the response.
      *
      * @param string $path
      * @return array
@@ -54,7 +53,7 @@ class ImageController
     }
 
     /**
-     * Get the E-Tag from the last modified date of the file
+     * Get the E-Tag from the last modified date of the file.
      *
      * @param string $path
      * @return string
@@ -65,7 +64,7 @@ class ImageController
     }
 
     /**
-     * Get the file URI
+     * Get the file URI.
      *
      * @param string $filename
      * @return string
@@ -81,7 +80,7 @@ class ImageController
     }
 
     /**
-     * Check if a file exists
+     * Check if a file exists.
      *
      * @param string $path
      * @return bool
@@ -92,7 +91,7 @@ class ImageController
     }
 
     /**
-     * Response for missing files
+     * Response for missing files.
      *
      * @param Request $request
      * @param string $filename
@@ -105,7 +104,7 @@ class ImageController
     }
 
     /**
-     * Get the storage disk
+     * Get the storage disk.
      *
      * @return \Illuminate\Contracts\Filesystem\Filesystem
      */
