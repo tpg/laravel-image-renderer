@@ -9,7 +9,7 @@
 Like everything Laravel, the Image Renderer is installed using Composer. From the terminal, in your project root, run:
 
 ```bash
-composer require tpg/laravel-image-renderer
+composer require thepublicgood/laravel-image-renderer
 ```
 
 Once installed, you can publish the config file with:
