@@ -27,5 +27,12 @@
     "require-dev": {
         "orchestra/testbench": "^3.8",
         "phpunit/phpunit": "^8.1"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TPG\\ImageRenderer\\ImageRendererServiceProvider"
+            ]
+        }
     }
 }
