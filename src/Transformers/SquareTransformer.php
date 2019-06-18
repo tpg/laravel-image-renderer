@@ -2,16 +2,18 @@
 
 namespace TPG\ImageRenderer\Transformers;
 
-class SquareTransformer extends Transformer
+use TPG\ImageRenderer\Transformers\Contracts\Transformer;
+
+class SquareTransformer implements Transformer
 {
     /**
      * The transformer.
      *
      * @param $image
-     * @param mixed ...$values
+     * @param array $values
      * @return mixed
      */
-    public function handle($image, ...$values)
+    public function handle($image, array $values)
     {
         $image->fit($values[0]);
     }

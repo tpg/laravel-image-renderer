@@ -3,6 +3,7 @@
 namespace TPG\Tests;
 
 use Illuminate\Support\Facades\Storage;
+use TPG\ImageRenderer\Facades\ImageRenderer;
 use TPG\ImageRenderer\ImageRendererServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
@@ -31,6 +32,13 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         return [
             ImageRendererServiceProvider::class,
+        ];
+    }
+
+    protected function getPackageAliases($app)
+    {
+        return [
+            'ImageRenderer' => ImageRenderer::class,
         ];
     }
 }

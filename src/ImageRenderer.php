@@ -2,6 +2,7 @@
 
 namespace TPG\ImageRenderer;
 
+use Illuminate\Support\Arr;
 use Intervention\Image\Image;
 use Intervention\Image\ImageCache;
 use Intervention\Image\ImageManager;
@@ -17,6 +18,8 @@ class ImageRenderer
      */
     protected $imageManager;
 
+    protected $transformers;
+
     /**
      * ImageRenderer constructor.
      */
@@ -25,6 +28,13 @@ class ImageRenderer
         $this->imageManager = new ImageManager([
             'driver' => config('renderer.intervention.driver'),
         ]);
+
+        $this->transformers = config('renderer.transformers');
+    }
+
+    public function addTransformer(string $key, string $class): void
+    {
+        $this->transformers[$key] = $class;
     }
 
     /**
@@ -63,12 +73,13 @@ class ImageRenderer
     protected function transform(ImageCache $image, array $options)
     {
         foreach ($options as $key => $value) {
-            $class = config('renderer.transformers.'.$key);
+            $class = Arr::get($this->transformers, $key);
+
             if (! $class) {
                 throw new \InvalidArgumentException('No transformer with key '.$key);
             }
 
-            (new $class)->handle($image, ...explode(',', $value));
+            (new $class)->handle($image, explode(',', $value));
         }
 
         return $image;

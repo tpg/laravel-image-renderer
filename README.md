@@ -41,14 +41,14 @@ Transformers can be combined as well.
 
 ## Custom Transformers
 
-You can write your own transforms by extending the `TPG\ImageRenderer\Transformers\Transformer` class. All transformer classes must implement a `handle` method which accept two parameters, and be suffixed with `Transformer`:
+You can write your own transforms by implementing the `TPG\ImageRenderer\Transformers\Contracts\Transformer` interface. All transformer classes must implement a `handle` method which accept two parameters, and be suffixed with `Transformer`:
 
 ```php
 namespace App\Transformers;
 
-use TPG\ImageRenderer\Transformers\Transformer;
+use TPG\ImageRenderer\Transformers\Contracts\Transformer;
 
-class MyTransformer extends Transformer
+class MyTransformer implements Transformer
 {
     public function handle($image, ...$values)
     {
@@ -59,7 +59,29 @@ class MyTransformer extends Transformer
 }
 ```
 
-The `$image` is an instance of the `Intervention\ImageCache` class and the `...$value` are any values passed to the query. In the previous example, two values are expected. Once the transformer class is in place, add it to the `transformers` config key:
+The `$image` is an instance of the `Intervention\ImageCache` class and the `...$value` are any values passed to the query. In the previous example, two values are expected. Remember to return the `$image` when the transformer is complete.
+
+Once the transformer class is in place, the renderer needs to be told that the transformer is available. This can be done in two ways. You can either call the `addTransformer` method on the `ImageRenderer` facade from your `AppServiceProvider`:
+
+```php
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function register()
+    {
+        ImageRenderer::addTransformer(
+            'custom',
+            App\Transformers\MyTransformer::class
+        );
+    }
+}
+
+```
+
+Or you can add it to the `transformers` config key:
 
 ```php
 return [
@@ -85,3 +107,4 @@ Please make sure to update tests as appropriate.
 
 ## License
 This package is licensed un the [MIT](LICENSE.md) license.
+ 

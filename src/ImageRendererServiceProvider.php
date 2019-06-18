@@ -25,5 +25,9 @@ class ImageRendererServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/renderer.php', 'renderer');
+
+        $this->app->singleton('laravel-image-renderer.facade', function () {
+            return new ImageRenderer();
+        });
     }
 }

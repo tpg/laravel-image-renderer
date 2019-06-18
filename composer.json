@@ -32,7 +32,10 @@
         "laravel": {
             "providers": [
                 "TPG\\ImageRenderer\\ImageRendererServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "ImageRenderer": "TPG\\ImageRenderer\\ImageRenderer"
+            }
         }
     }
 }

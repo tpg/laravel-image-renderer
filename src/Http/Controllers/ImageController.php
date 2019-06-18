@@ -4,10 +4,10 @@ namespace TPG\ImageRenderer\Http\Controllers;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use TPG\ImageRenderer\ImageRenderer;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use TPG\ImageRenderer\Facades\ImageRenderer;
 
 /**
  * Class ImageController.
@@ -29,7 +29,7 @@ class ImageController
             $this->sendMissingFileResponse($request, $filename);
         }
 
-        $make = (new ImageRenderer())->render($path, $request->all());
+        $make = ImageRenderer::render($path, $request->input());
 
         $response = Response::make($make);
         $response->headers->add($this->responseHeaders($path));

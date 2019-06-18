@@ -2,19 +2,21 @@
 
 namespace TPG\ImageRenderer\Transformers;
 
+use TPG\ImageRenderer\Transformers\Contracts\Transformer;
+
 /**
  * Class WidthTransformer.
  */
-class WidthTransformer extends Transformer
+class WidthTransformer implements Transformer
 {
     /**
      * The transformer.
      *
      * @param $image
-     * @param mixed ...$values
+     * @param array $values
      * @return mixed
      */
-    public function handle($image, ...$values)
+    public function handle($image, array $values)
     {
         $image->widen($values[0]);
 

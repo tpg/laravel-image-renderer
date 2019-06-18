@@ -2,16 +2,18 @@
 
 namespace TPG\ImageRenderer\Transformers;
 
-class HeightTransformer extends Transformer
+use TPG\ImageRenderer\Transformers\Contracts\Transformer;
+
+class HeightTransformer implements Transformer
 {
     /**
      * The transformer.
      *
      * @param $image
-     * @param mixed ...$values
+     * @param array $values
      * @return mixed
      */
-    public function handle($image, ...$values)
+    public function handle($image, array $values)
     {
         $image->heighten($values[0]);
 
