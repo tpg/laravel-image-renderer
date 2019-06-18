@@ -26,6 +26,7 @@ A single route will be registered, the default is to use: `/images/{filename}` b
 You may also wish to alter the `storage` config options. By default, images are expected to be in `/storage/app/images`.
 
 Once an image is stored in the correct location, a GET request to `http://mysite.test/images/filename.jpg` will render the image to the browser.
+Sub-directories are also supported, so the file `/images/gallery/picture.jpg` can be rendered by pointing to `http://mysite.test/images/gallery/picture.jpg`.
 
 ## Transformers
 
@@ -107,4 +108,3 @@ Please make sure to update tests as appropriate.
 
 ## License
 This package is licensed un the [MIT](LICENSE.md) license.
- 
