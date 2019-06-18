@@ -2,7 +2,6 @@
 
 namespace TPG\Tests;
 
-use Faker\Provider\Image;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Config;
 use TPG\Tests\Transformers\CustomTransformer;
