@@ -18,7 +18,7 @@ class FacadeTest extends TestCase
         $url = config('renderer.routes.base').'/test_image.jpg';
 
         $query = http_build_query([
-            'custom' => '300,200'
+            'custom' => '300,200',
         ]);
 
         $response = $this->get($url.'?'.$query);

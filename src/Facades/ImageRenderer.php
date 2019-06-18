@@ -2,11 +2,11 @@
 
 namespace TPG\ImageRenderer\Facades;
 
-use Illuminate\Support\Facades\Facade;
 use Intervention\Image\Image;
+use Illuminate\Support\Facades\Facade;
 
 /**
- * Class ImageRendererFacade
+ * Class ImageRendererFacade.
  *
  * @method static Image|null render(string $path, array $options = [])
  * @method static void addTransformer(string $key, string $class)
