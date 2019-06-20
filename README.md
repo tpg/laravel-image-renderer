@@ -51,7 +51,7 @@ use TPG\ImageRenderer\Transformers\Contracts\Transformer;
 
 class MyTransformer implements Transformer
 {
-    public function handle($image, ...$values)
+    public function handle($image, array $values)
     {
         $image->crop($values[0], $values[1]);
         
@@ -60,7 +60,7 @@ class MyTransformer implements Transformer
 }
 ```
 
-The `$image` is an instance of the `Intervention\ImageCache` class and the `...$value` are any values passed to the query. In the previous example, two values are expected. Remember to return the `$image` when the transformer is complete.
+The `$image` is an instance of the `Intervention\ImageCache` class and the `$values` array contains any values passed to the query. In the previous example, two values are expected. Remember to return the `$image` when the transformer is complete.
 
 Once the transformer class is in place, the renderer needs to be told that the transformer is available. This can be done in two ways. You can either call the `addTransformer` method on the `ImageRenderer` facade from your `AppServiceProvider`:
 
@@ -107,4 +107,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ## License
-This package is licensed un the [MIT](LICENSE.md) license.
+This package is licensed under the [MIT](LICENSE.md) license.

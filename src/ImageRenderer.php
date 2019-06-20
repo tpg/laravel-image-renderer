@@ -32,6 +32,12 @@ class ImageRenderer
         $this->transformers = config('renderer.transformers');
     }
 
+    /**
+     * Register a new transformer class
+     *
+     * @param string $key
+     * @param string $class
+     */
     public function addTransformer(string $key, string $class): void
     {
         $this->transformers[$key] = $class;
@@ -43,6 +49,7 @@ class ImageRenderer
      * @param string $path
      * @param array $options
      * @return Image|string
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function render(string $path, array $options = [])
     {
@@ -50,7 +57,14 @@ class ImageRenderer
             return $this->imageData($path);
         }
 
-        $image = $this->imageManager->cache(function (ImageCache $cache) use ($path, $options) {
+        $image = $this->prepareImage($path, $options);
+
+        return $image;
+    }
+
+    protected function prepareImage(string $path, array $options = []): Image
+    {
+        return $this->imageManager->cache(function (ImageCache $cache) use ($path, $options) {
             $image = $cache->make($this->imageData($path));
 
             if ($options) {
@@ -59,8 +73,6 @@ class ImageRenderer
 
             return $image;
         }, config('renderer.intervention.cache.duration'), true);
-
-        return $image;
     }
 
     /**
@@ -90,6 +102,7 @@ class ImageRenderer
      *
      * @param string $path
      * @return string
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     protected function imageData(string $path)
     {

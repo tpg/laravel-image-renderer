@@ -23,18 +23,22 @@ class ImageController
      */
     public function __invoke(Request $request, string $filename)
     {
-        $path = $this->getFileUri($filename);
+        $path = $this->getFilePath($filename);
 
         if (! $this->fileExists($path)) {
             $this->sendMissingFileResponse($request, $filename);
         }
 
-        $make = ImageRenderer::render($path, $request->input());
+        if ($this->notModified($request, $path, $request->input())) {
+            return Response::make()->setNotModified();
+        }
 
-        $response = Response::make($make);
-        $response->headers->add($this->responseHeaders($path));
+        return $this->render($path, $request->input());
+    }
 
-        return $response;
+    protected function notModified(Request $request, string $path, array $options = [])
+    {
+        return in_array($this->hash($path, $options), $request->getETags());
     }
 
     /**
@@ -43,12 +47,12 @@ class ImageController
      * @param string $path
      * @return array
      */
-    protected function responseHeaders(string $path)
+    protected function responseHeaders(string $path, array $options = [])
     {
         return [
             'Content-Type' => $this->storageDisk()->mimeType($path),
             'Cache-Control' => 'private,max-age='.(config('renderer.cache.duration') * 100),
-            'ETag' => $this->getETag($path),
+            'ETag' => $this->getETag($path, $options),
         ];
     }
 
@@ -58,9 +62,16 @@ class ImageController
      * @param string $path
      * @return string
      */
-    protected function getETag(string $path)
+    protected function getETag(string $path, array $options = [])
     {
-        return md5($this->storageDisk()->lastModified($path));
+        return $this->hash($path, $options);
+    }
+
+    protected function hash(string $path, array $options = [])
+    {
+        $query = http_build_query($options);
+
+        return md5($this->storageDisk()->lastModified($path).'?'.$query);
     }
 
     /**
@@ -69,7 +80,7 @@ class ImageController
      * @param string $filename
      * @return string
      */
-    protected function getFileUri(string $filename): string
+    protected function getFilePath(string $filename): string
     {
         $path = config('renderer.storage.path');
         if (! Str::endsWith($path, '/')) {
@@ -101,6 +112,16 @@ class ImageController
         $message = 'File '.$filename.' was not found.';
 
         throw new NotFoundHttpException($message);
+    }
+
+    protected function render(string $path, array $options = [])
+    {
+        $make = ImageRenderer::render($path, $options);
+
+        $response = Response::make($make);
+        $response->headers->add($this->responseHeaders($path, $options));
+
+        return $response;
     }
 
     /**

@@ -2,8 +2,13 @@
 
 namespace TPG\Tests;
 
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Config;
+use Symfony\Component\HttpFoundation\HeaderBag;
+use TPG\ImageRenderer\Facades\ImageRenderer;
+use TPG\ImageRenderer\Http\Controllers\ImageController;
 use TPG\Tests\Transformers\CustomTransformer;
 
 class ImageTest extends TestCase
