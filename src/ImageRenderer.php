@@ -62,6 +62,13 @@ class ImageRenderer
         return $image;
     }
 
+    /**
+     * Prepare the image for output
+     *
+     * @param string $path
+     * @param array $options
+     * @return Image
+     */
     protected function prepareImage(string $path, array $options = []): Image
     {
         return $this->imageManager->cache(function (ImageCache $cache) use ($path, $options) {
@@ -72,7 +79,7 @@ class ImageRenderer
             }
 
             return $image;
-        }, config('renderer.intervention.cache.duration'), true);
+        }, config('renderer.intervention.cache.duration') / 60, true);
     }
 
     /**

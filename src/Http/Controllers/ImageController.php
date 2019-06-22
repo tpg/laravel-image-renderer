@@ -49,9 +49,13 @@ class ImageController
      */
     protected function responseHeaders(string $path, array $options = [])
     {
+        $cacheControl =
+            (config('renderer.cache.public') ? 'public' : 'private').
+            ',max-age='.config('renderer.cache.duration');
+
         return [
             'Content-Type' => $this->storageDisk()->mimeType($path),
-            'Cache-Control' => 'private,max-age='.(config('renderer.cache.duration') * 100),
+            'Cache-Control' => $cacheControl,
             'ETag' => $this->getETag($path, $options),
         ];
     }
