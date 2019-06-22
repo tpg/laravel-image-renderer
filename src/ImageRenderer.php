@@ -63,7 +63,7 @@ class ImageRenderer
     }
 
     /**
-     * Prepare the image for output
+     * Prepare the image for output.
      *
      * @param string $path
      * @param array $options
