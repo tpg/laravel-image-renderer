@@ -36,6 +36,14 @@ class ImageController
         return $this->render($path, $request->input());
     }
 
+    /**
+     * Check is a file has not been modified
+     *
+     * @param Request $request
+     * @param string $path
+     * @param array $options
+     * @return bool
+     */
     protected function notModified(Request $request, string $path, array $options = [])
     {
         return in_array($this->hash($path, $options), $request->getETags());
@@ -71,6 +79,13 @@ class ImageController
         return $this->hash($path, $options);
     }
 
+    /**
+     * Get an MD5 hash of the files last modification time and the query string
+     *
+     * @param string $path
+     * @param array $options
+     * @return string
+     */
     protected function hash(string $path, array $options = [])
     {
         $query = http_build_query($options);
@@ -118,6 +133,13 @@ class ImageController
         throw new NotFoundHttpException($message);
     }
 
+    /**
+     * Get a rendered image response.
+     *
+     * @param string $path
+     * @param array $options
+     * @return \Illuminate\Http\Response
+     */
     protected function render(string $path, array $options = [])
     {
         $make = ImageRenderer::render($path, $options);

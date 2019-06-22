@@ -6,7 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 - Cache the response
-- Send 304 Not Modified responses when the file on disk has not changed
+
+## [0.2.0] - 2019-06-22
+### Added
+- Response may return a 304 Not Modified if the file on disk has not changed and the request is the same regardless of cache status.
+- The `cache.public` config setting was added.
+
+### Changes
+- The cache duration is now expressed in seconds and not minutes.
 
 ## [0.1.0] - 2019-06-18
 - Added an `ImageRenderer` facade.
