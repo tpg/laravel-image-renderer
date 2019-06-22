@@ -33,7 +33,7 @@ class ImageRenderer
     }
 
     /**
-     * Register a new transformer class
+     * Register a new transformer class.
      *
      * @param string $key
      * @param string $class
