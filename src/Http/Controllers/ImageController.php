@@ -37,7 +37,7 @@ class ImageController
     }
 
     /**
-     * Check is a file has not been modified
+     * Check is a file has not been modified.
      *
      * @param Request $request
      * @param string $path
@@ -80,7 +80,7 @@ class ImageController
     }
 
     /**
-     * Get an MD5 hash of the files last modification time and the query string
+     * Get an MD5 hash of the files last modification time and the query string.
      *
      * @param string $path
      * @param array $options
