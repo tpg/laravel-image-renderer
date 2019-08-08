@@ -35,7 +35,7 @@
                 "TPG\\ImageRenderer\\ImageRendererServiceProvider"
             ],
             "aliases": {
-                "ImageRenderer": "TPG\\ImageRenderer\\ImageRenderer"
+                "ImageRenderer": "TPG\\ImageRenderer\\Facades\\ImageRenderer"
             }
         }
     }
