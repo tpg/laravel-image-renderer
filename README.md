@@ -55,7 +55,7 @@ class MyTransformer implements Transformer
     {
         $image->crop($values[0], $values[1]);
         
-        returm $image;
+        return $image;
     }
 }
 ```
