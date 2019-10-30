@@ -14,7 +14,9 @@ class ImageRendererServiceProvider extends ServiceProvider
             'prefix' => config('renderer.routes.base'),
             'middleware' => config('renderer.middleware'),
         ], function () {
-            Route::get('{key}', ImageController::class)->where('key', '.+');
+            Route::get('{key}', ImageController::class)
+                ->where('key', '.+')
+                ->name(config('renderer.routes.name'));
         });
 
         $this->publishes([

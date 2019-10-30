@@ -11,11 +11,15 @@ return [
     | as any route middleware that should be attached. Simply list the
     | middleware names as you would with any other route.
     |
+    | You can also specify the name of the route. This is handy if you use
+    | named routes in your app.
+    |
     */
 
     'routes' => [
         'base' => '/images',
         'middleware' => [],
+        'name' => 'images.render',
     ],
 
     /*

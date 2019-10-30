@@ -25,6 +25,20 @@ class ImageTest extends TestCase
     /**
      * @test
      */
+    public function it_can_render_an_image_using_a_route_name()
+    {
+        $this->withoutExceptionHandling();
+
+        $route = route(config('renderer.routes.name'), ['test_image.jpg']);
+
+        $this->get($route)
+            ->assertStatus(200)
+            ->assertHeader('Content-Type', 'image/jpeg');
+    }
+
+    /**
+     * @test
+     */
     public function it_will_return_a_404_for_missing_images()
     {
         $imagePath = config('renderer.routes.base').'/missing-image.jpg';
