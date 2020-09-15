@@ -2,12 +2,12 @@
 
 namespace TPG\ImageRenderer\Http\Controllers;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
-use TPG\ImageRenderer\Facades\ImageRenderer;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use TPG\ImageRenderer\Facades\ImageRenderer;
 
 /**
  * Class ImageController.

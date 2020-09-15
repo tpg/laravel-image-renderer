@@ -2,8 +2,8 @@
 
 namespace TPG\Tests;
 
-use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Config;
+use Intervention\Image\ImageManager;
 use TPG\Tests\Transformers\CustomTransformer;
 
 class ImageTest extends TestCase
