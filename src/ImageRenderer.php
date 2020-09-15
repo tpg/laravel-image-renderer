@@ -3,10 +3,10 @@
 namespace TPG\ImageRenderer;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Image;
 use Intervention\Image\ImageCache;
 use Intervention\Image\ImageManager;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * Class ImageRenderer.

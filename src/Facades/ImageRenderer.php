@@ -2,8 +2,8 @@
 
 namespace TPG\ImageRenderer\Facades;
 
-use Intervention\Image\Image;
 use Illuminate\Support\Facades\Facade;
+use Intervention\Image\Image;
 
 /**
  * Class ImageRendererFacade.
