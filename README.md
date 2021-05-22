@@ -1,3 +1,5 @@
+> This package has been deprecated as I no longer have any use for it and no longer want to maintain it. You can continue to use the package, but I'd recommend looking at the `intervention/image` package (which this one relies on) as it has URL manipulation built in. There really isn't any need for this package anymore.
+
 # Laravel Image Renderer
 
 [![Build Status](https://travis-ci.org/tpg/laravel-image-renderer.svg?branch=master)](https://travis-ci.org/tpg/laravel-image-renderer)
