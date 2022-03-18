@@ -17,8 +17,8 @@ class ImageController
     /**
      * Image response.
      *
-     * @param Request $request
-     * @param string $filename
+     * @param  Request  $request
+     * @param  string  $filename
      * @return \Illuminate\Http\Response
      */
     public function __invoke(Request $request, string $filename)
@@ -39,9 +39,9 @@ class ImageController
     /**
      * Check is a file has not been modified.
      *
-     * @param Request $request
-     * @param string $path
-     * @param array $options
+     * @param  Request  $request
+     * @param  string  $path
+     * @param  array  $options
      * @return bool
      */
     protected function notModified(Request $request, string $path, array $options = [])
@@ -52,7 +52,7 @@ class ImageController
     /**
      * Get the headers to attach to the response.
      *
-     * @param string $path
+     * @param  string  $path
      * @return array
      */
     protected function responseHeaders(string $path, array $options = [])
@@ -71,7 +71,7 @@ class ImageController
     /**
      * Get the E-Tag from the last modified date of the file.
      *
-     * @param string $path
+     * @param  string  $path
      * @return string
      */
     protected function getETag(string $path, array $options = [])
@@ -82,8 +82,8 @@ class ImageController
     /**
      * Get an MD5 hash of the files last modification time and the query string.
      *
-     * @param string $path
-     * @param array $options
+     * @param  string  $path
+     * @param  array  $options
      * @return string
      */
     protected function hash(string $path, array $options = [])
@@ -96,7 +96,7 @@ class ImageController
     /**
      * Get the file URI.
      *
-     * @param string $filename
+     * @param  string  $filename
      * @return string
      */
     protected function getFilePath(string $filename): string
@@ -112,7 +112,7 @@ class ImageController
     /**
      * Check if a file exists.
      *
-     * @param string $path
+     * @param  string  $path
      * @return bool
      */
     protected function fileExists(string $path)
@@ -123,8 +123,8 @@ class ImageController
     /**
      * Response for missing files.
      *
-     * @param Request $request
-     * @param string $filename
+     * @param  Request  $request
+     * @param  string  $filename
      */
     protected function sendMissingFileResponse(Request $request, string $filename)
     {
@@ -136,8 +136,8 @@ class ImageController
     /**
      * Get a rendered image response.
      *
-     * @param string $path
-     * @param array $options
+     * @param  string  $path
+     * @param  array  $options
      * @return \Illuminate\Http\Response
      */
     protected function render(string $path, array $options = [])

@@ -35,8 +35,8 @@ class ImageRenderer
     /**
      * Register a new transformer class.
      *
-     * @param string $key
-     * @param string $class
+     * @param  string  $key
+     * @param  string  $class
      */
     public function addTransformer(string $key, string $class): void
     {
@@ -46,9 +46,10 @@ class ImageRenderer
     /**
      * Render the image.
      *
-     * @param string $path
-     * @param array $options
+     * @param  string  $path
+     * @param  array  $options
      * @return Image|string
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function render(string $path, array $options = [])
@@ -65,8 +66,8 @@ class ImageRenderer
     /**
      * Prepare the image for output.
      *
-     * @param string $path
-     * @param array $options
+     * @param  string  $path
+     * @param  array  $options
      * @return Image
      */
     protected function prepareImage(string $path, array $options = []): Image
@@ -85,8 +86,8 @@ class ImageRenderer
     /**
      * Transform an image.
      *
-     * @param ImageCache $image
-     * @param array $options
+     * @param  ImageCache  $image
+     * @param  array  $options
      * @return ImageCache
      */
     protected function transform(ImageCache $image, array $options)
@@ -107,8 +108,9 @@ class ImageRenderer
     /**
      * Get image data.
      *
-     * @param string $path
+     * @param  string  $path
      * @return string
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     protected function imageData(string $path)
